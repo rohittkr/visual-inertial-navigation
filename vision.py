@@ -68,4 +68,6 @@ plt.plot(trajectory[:,0], trajectory[:,1])
 plt.title("Vision-based Trajectory")
 plt.xlabel("X")
 plt.ylabel("Y")
+plt.savefig("results/vision_trajectory.png", dpi=300)
 plt.show()
+

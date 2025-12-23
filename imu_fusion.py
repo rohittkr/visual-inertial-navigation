@@ -76,4 +76,6 @@ plt.legend()
 plt.title("Visual–Inertial Navigation Comparison")
 plt.xlabel("X")
 plt.ylabel("Y")
+plt.savefig("results/vio_comparison.png", dpi=300)
 plt.show()
+
