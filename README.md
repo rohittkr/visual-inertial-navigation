@@ -31,3 +31,14 @@ rather than achieving production-level accuracy.
 ---
 
 ## Project Structure
+
+vio_project/
+├── vision.py # Vision-only odometry
+├── imu_fusion.py # IMU + vision fusion
+├── generate_imu.py # IMU data simulator
+├── README.md
+├── data/
+│ ├── video.mp4
+│ └── imu.csv
+└── results/
+└── vio_comparison.png
