@@ -3,9 +3,6 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-# -----------------------------
-# LOAD IMU DATA
-# -----------------------------
 imu = pd.read_csv("data/imu.csv")
 
 dt = 0.01
@@ -22,9 +19,6 @@ for _, row in imu.iterrows():
 
 imu_traj = np.array(imu_traj)
 
-# -----------------------------
-# VISION TRAJECTORY (RECOMPUTE)
-# -----------------------------
 cap = cv2.VideoCapture("data/video.mp4")
 ret, prev = cap.read()
 prev_gray = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
@@ -57,17 +51,14 @@ while True:
 cap.release()
 vision_traj = np.array(vision_traj)
 
-# -----------------------------
 # SENSOR FUSION (WEIGHTED)
-# -----------------------------
+
 min_len = min(len(imu_traj), len(vision_traj))
 alpha = 0.7  # IMU weight
 
 fused_traj = alpha * imu_traj[:min_len] + (1 - alpha) * vision_traj[:min_len]
 
-# -----------------------------
-# PLOT RESULTS
-# -----------------------------
+
 plt.figure(figsize=(8, 6))
 plt.plot(vision_traj[:,0], vision_traj[:,1], label="Vision Only")
 plt.plot(imu_traj[:,0], imu_traj[:,1], label="IMU Only")

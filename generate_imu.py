@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-# Time from 0 to 10 seconds (100 Hz)
 t = np.arange(0, 10, 0.01)
 
 imu = pd.DataFrame({
